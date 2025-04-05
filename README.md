@@ -29,7 +29,7 @@ business from rival companies. A competitor is a rival. Smart phone technology i
 
 **Statement:** "A competitor is a rival"  
 **FOL:**
-`∀company ∀competitor (competitor(company,competitor) → rival(company,competitor)) <br/>
+`∀company ∀competitor (competitor(company,competitor) → rival(company,competitor)) <br />
 ∀company ∀competitor (competitor(company,competitor) → rival(competitor,company))`
 
 **Statement:** "Smart phone technology is business"  
