@@ -29,8 +29,9 @@ business from rival companies. A competitor is a rival. Smart phone technology i
 
 **Statement:** "A competitor is a rival"  
 **FOL:**
-`∀company ∀competitor (competitor(company,competitor) → rival(company,competitor))__
-∀company ∀competitor (competitor(company,competitor) → rival(competitor,company))`
+`∀company ∀competitor (competitor(company,competitor) → rival(company,competitor))`
+<br>
+`∀company ∀competitor (competitor(company,competitor) → rival(competitor,company))`
 
 **Statement:** "Smart phone technology is business"  
 **FOL:** `∀technology (smart_phone_technology(technology) → business(technology))`
@@ -43,24 +44,6 @@ business from rival companies. A competitor is a rival. Smart phone technology i
     ∧ developed(rival_company, business) 
     → unethical(boss)`
 )
-
-## Prolog Clause
-competitor(sumsum, appy).
-developed(sumsum, galacticas3).
-smart_phone_technology(galacticas3).
-stole(stevey, galacticas3).
-boss(stevey, appy).
-
-unethical(Boss) :- boss(Boss, Company),
-    		       rival(Company, RivalCompany),
-    		       stole(Boss, Business),
-    		       business(Business),
-    		       developed(RivalCompany, Business).
-
-rival(Competitor, Company) :- competitor(Company, Competitor).
-rival(Company, Competitor) :- competitor(Company, Competitor).
-
-business(Technology) :- smart_phone_technology(Technology).
 
 ## Results
 ![image](https://github.com/user-attachments/assets/f9487127-fbf3-4e7b-9c27-c3054d144c4c)
