@@ -6,5 +6,54 @@ This work contains my solutions for SC3000 Lab Assignment 2, which involves:
 2. Implementing these FOL statements as Prolog clauses  
 3. Proving that "Stevey is unethical" using Prolog
 
+## Context
+sumsum, a competitor of appy, developed some nice smart phone technology called galactica
+s3, all of which was stolen by stevey, who is a boss of appy. It is unethical for a boss to steal 
+business from rival companies. A competitor is a rival. Smart phone technology is business. 
+
+## Derived first order logic (FOL)
+Statement: “sumsum, a competitor of appy”
+FOL: competitor(sumsum, appy)
+
+Statement: sumsum, “developed some nice smart phone technology called galactica s3”
+FOL: developed(sumsum, galacticas3)
+
+Statement: “nice smart phone technology called galactica s3”
+FOL: smart_phone_technology(galacticas3).
+
+Statement: “galactica s3, all of which was stolen by stevey”
+FOL: stole(stevey, galacticas3)
+
+Statement: “stevey, who is a boss of appy”
+FOL: boss(stevey, appy)
+
+Statement: “It is unethical for a boss to steal business from rival companies”
+FOL: ∀boss ∀company ∀rival_company ∀business (boss(boss, company) ∧ rival(company, rival_company) ∧ stole(boss, business) ∧ developed(rival_company, business) → unethical(boss))
+
+Statement: “A competitor is a rival”
+FOL: ∀company ∀competitor (competitor(company,competitor) → rival(company,competitor))
+          ∀company ∀competitor (competitor(company,competitor) → rival(Competitor, Company))
+
+Statement: “Smart phone technology is business”
+FOL: ∀technology (smart_phone_technology(technology) → business(technology))
+
+## Prolog Clause
+competitor(sumsum, appy).
+developed(sumsum, galacticas3).
+smart_phone_technology(galacticas3).
+stole(stevey, galacticas3).
+boss(stevey, appy).
+
+unethical(Boss) :- boss(Boss, Company),
+    		       rival(Company, RivalCompany),
+    		       stole(Boss, Business),
+    		       business(Business),
+    		       developed(RivalCompany, Business).
+
+rival(Competitor, Company) :- competitor(Company, Competitor).
+rival(Company, Competitor) :- competitor(Company, Competitor).
+
+business(Technology) :- smart_phone_technology(Technology).
+
 ## Results
 ![image](https://github.com/user-attachments/assets/f9487127-fbf3-4e7b-9c27-c3054d144c4c)
