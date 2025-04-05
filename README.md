@@ -37,12 +37,12 @@ business from rival companies. A competitor is a rival. Smart phone technology i
 **FOL:** `∀technology (smart_phone_technology(technology) → business(technology))`
 
 **Statement:** "It is unethical for a boss to steal business from rival companies""  
-**FOL:** ``````∀boss ∀company ∀rival_company ∀business (
+**FOL:** `∀boss ∀company ∀rival_company ∀business (
     boss(boss, company) 
     ∧ rival(company, rival_company) 
     ∧ stole(boss, business) 
     ∧ developed(rival_company, business) 
-    → unethical(boss)``````
+    → unethical(boss)`
 )
 
 ## Prolog Clause
