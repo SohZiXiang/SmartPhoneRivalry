@@ -11,31 +11,39 @@ sumsum, a competitor of appy, developed some nice smart phone technology called 
 s3, all of which was stolen by stevey, who is a boss of appy. It is unethical for a boss to steal 
 business from rival companies. A competitor is a rival. Smart phone technology is business. 
 
-## Derived first order logic (FOL)
-Statement: “sumsum, a competitor of appy”
-FOL: competitor(sumsum, appy)
+## First-Order Logic (FOL) Translations
+**Statement:** "sumsum, a competitor of appy"  
+**FOL:** `competitor(sumsum, appy)`
 
-Statement: sumsum, “developed some nice smart phone technology called galactica s3”
-FOL: developed(sumsum, galacticas3)
+**Statement:** "sumsum developed galactica s3"  
+**FOL:** `developed(sumsum, galacticas3)`
 
-Statement: “nice smart phone technology called galactica s3”
-FOL: smart_phone_technology(galacticas3).
+**Statement:** "galactica s3 is smart phone technology"  
+**FOL:** `smart_phone_technology(galacticas3)`
 
-Statement: “galactica s3, all of which was stolen by stevey”
-FOL: stole(stevey, galacticas3)
+**Statement:** "stevey stole galactica s3"  
+**FOL:** `stole(stevey, galacticas3)`
 
-Statement: “stevey, who is a boss of appy”
-FOL: boss(stevey, appy)
+**Statement:** "stevey is a boss of appy"  
+**FOL:** `boss(stevey, appy)`
 
-Statement: “It is unethical for a boss to steal business from rival companies”
-FOL: ∀boss ∀company ∀rival_company ∀business (boss(boss, company) ∧ rival(company, rival_company) ∧ stole(boss, business) ∧ developed(rival_company, business) → unethical(boss))
+**Statement:** "A competitor is a rival"  
+**FOL:**
+```firstorderlogic
+∀company ∀competitor (competitor(company,competitor) → rival(company,competitor))
+∀company ∀competitor (competitor(company,competitor) → rival(competitor,company))
 
-Statement: “A competitor is a rival”
-FOL: ∀company ∀competitor (competitor(company,competitor) → rival(company,competitor))
-          ∀company ∀competitor (competitor(company,competitor) → rival(Competitor, Company))
+**Statement:** "Smart phone technology is business"  
+**FOL:** `∀technology (smart_phone_technology(technology) → business(technology))`
 
-Statement: “Smart phone technology is business”
-FOL: ∀technology (smart_phone_technology(technology) → business(technology))
+**Statement:** "It is unethical for a boss to steal business from rival companies""  
+**FOL:** ``````∀boss ∀company ∀rival_company ∀business (
+    boss(boss, company) 
+    ∧ rival(company, rival_company) 
+    ∧ stole(boss, business) 
+    ∧ developed(rival_company, business) 
+    → unethical(boss)``````
+)
 
 ## Prolog Clause
 competitor(sumsum, appy).
